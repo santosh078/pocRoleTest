@@ -1,0 +1,15 @@
+@host=localhost
+@port=4004
+@base=testSrv
+
+###send
+GET HTTP://{{host}}:{{port}}/{{base}}/$metadata
+
+###send
+GET HTTP://{{host}}:{{port}}/{{base}}/Products
+Authorization: Basic santosh:
+
+#####
+GET HTTP://{{host}}:{{port}}/{{base}}/getEmpInfo
+Authorization: Basic santosh:
+

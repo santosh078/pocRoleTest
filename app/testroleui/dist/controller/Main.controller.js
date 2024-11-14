@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller"],function(e){"use strict";return e.extend("com.test.testroleui.controller.Main",{onInit:function(){this.getOwnerComponent().getModel().read("/getEmpInfo",{success:e=>{var t=new sap.m.Messagebox;t.show(e)},error:e=>{}})}})});
+//# sourceMappingURL=Main.controller.js.map

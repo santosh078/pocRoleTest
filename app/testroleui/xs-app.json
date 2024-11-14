@@ -1,0 +1,26 @@
+{
+    "welcomeFile": "./testroleui/webapp/",
+    "authenticationMethod": "route",
+    "routes": [
+      {
+        "source": "^/app/(.*)$",
+        "target": "$1",
+        "localDir": ".",
+        "authenticationType": "xsuaa",
+        "csrfProtection": false,
+        "cacheControl": "no-cache, no-store, must-revalidate"
+      },
+      {
+        "source": "^/appconfig/",
+        "localDir": ".",
+        "cacheControl": "no-cache, no-store, must-revalidate"
+      },
+      {
+        "source": "^/srv-api/(.*)$",
+        "target": "$1",
+        "destination": "srv-api",
+        "csrfProtection": true
+      }
+    ]
+  }
+  

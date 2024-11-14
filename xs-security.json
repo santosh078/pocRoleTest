@@ -1,0 +1,31 @@
+{
+ "xsappname": "testRole",
+ "tenant-mode": "dedicated",
+ "scopes": [
+  {
+   "name": "$XSAPPNAME.viewer",
+   "description": "Viewer role for viewing content"
+  },
+  {
+   "name": "$XSAPPNAME.admin",
+   "description": "Admin role for managing the application"
+  }
+ ],
+ "role-templates": [
+  {
+   "name": "Viewer",
+   "description": "Viewer role",
+   "scope-references": [
+    "$XSAPPNAME.viewer"
+   ]
+  },
+  {
+   "name": "Admin",
+   "description": "Admin role",
+   "scope-references": [
+    "$XSAPPNAME.admin"
+   ]
+  }
+ ],
+ "attributes": []
+}

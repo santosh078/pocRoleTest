@@ -1,0 +1,66 @@
+{
+  "name": "testRole",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/http-client": "^3.21.0",
+    "@sap-cloud-sdk/resilience": "^3.21.0",
+    "@sap/cds": "^8",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
+    "@sap/xsenv": "^5.3.0",
+    "@sap/xssec": "^4",
+    "express": "^4",
+    "passport": "^0.7.0"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.6",
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^8",
+    "@sap/ux-specification": "^1.120.19",
+    "rimraf": "^5.0.5"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-testroleui": "cds watch --open testroleui/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy testRole --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+  },
+  "cds": {
+    "requires": {
+      "test": {
+        "kind": "odata",
+        "credentials": {
+          "url": "https://services.odata.org/Experimental/OData/OData.svc/"
+        }
+      },
+      "uaa": {
+        "kind": "xsuaa"
+      },
+      "auth": {
+        "[production]": {
+          "auth": "jwt"
+        },
+        "[development]": {
+          "kind": "mocked",
+          "users": {
+            "santosh": {
+              "roles": [
+                "Admin",
+                "Viewer"
+              ]
+            },
+            "murmu": {
+              "roles": [
+                "Viewer"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
